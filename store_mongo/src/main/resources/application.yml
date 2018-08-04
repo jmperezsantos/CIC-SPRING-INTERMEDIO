@@ -1,0 +1,8 @@
+spring:
+  data:
+    mongodb:
+      username: user
+      password: P@ssw0rd
+      host: 127.0.0.1
+      port: 27017
+      database: store_db
