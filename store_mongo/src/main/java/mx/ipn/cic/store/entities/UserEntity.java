@@ -1,9 +1,13 @@
 package mx.ipn.cic.store.entities;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-@Document(collection="user")
+@Document(collection = "user")
 public class UserEntity {
 
 	// El id en mongoDB se maneja como un string
@@ -20,17 +24,26 @@ public class UserEntity {
 
 	private String clientId;
 
+	@DBRef
+	private List<SellEntity> sells;
+
 	public UserEntity() {
 		super();
 	}
 
 	public UserEntity(String name, String lastname, String givenName, String address, String clientId) {
+		this(name, lastname, givenName, address, clientId, new ArrayList<>());
+	}
+
+	public UserEntity(String name, String lastname, String givenName, String address, String clientId,
+			List<SellEntity> sells) {
 		super();
 		this.name = name;
 		this.lastname = lastname;
 		this.givenName = givenName;
 		this.address = address;
 		this.clientId = clientId;
+		this.sells = sells;
 	}
 
 	public String getId() {
@@ -79,6 +92,14 @@ public class UserEntity {
 
 	public void setClientId(String clientId) {
 		this.clientId = clientId;
+	}
+
+	public List<SellEntity> getSells() {
+		return sells;
+	}
+
+	public void setSells(List<SellEntity> sells) {
+		this.sells = sells;
 	}
 
 	@Override

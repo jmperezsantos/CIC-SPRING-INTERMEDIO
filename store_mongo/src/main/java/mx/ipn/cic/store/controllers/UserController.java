@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import mx.ipn.cic.store.entities.UserEntity;
+import mx.ipn.cic.store.repository.SellRepository;
 import mx.ipn.cic.store.services.UserService;
 
 @Controller
@@ -53,22 +54,22 @@ public class UserController {
 	}
 
 	@RequestMapping(path = "/edit/{id}", method = RequestMethod.GET)
-	public ModelAndView edit(@PathVariable(name="id") String id) {
+	public ModelAndView edit(@PathVariable(name = "id") String id) {
 
 		UserEntity found = this.userService.findById(id);
-		
+
 		ModelAndView mav = new ModelAndView("user/form", "user", found);
 
 		return mav;
 	}
-	
+
 	@RequestMapping(path = "/delete/{id}", method = RequestMethod.GET)
-	public String delete(@PathVariable(name="id") String id) {
+	public String delete(@PathVariable(name = "id") String id) {
 
 		this.userService.delete(id);
-		
+
 		return "redirect:/user/all";
-		
+
 	}
 
 }
