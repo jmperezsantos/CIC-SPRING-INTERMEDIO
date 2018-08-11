@@ -48,6 +48,10 @@ public class UserController {
 	@PostMapping(path = "/save")
 	public String save(@ModelAttribute(name = "user") UserEntity user) {
 
+		if (user.getId()!= null && user.getId().length() == 0) {
+			user.setId(null);
+		}
+		
 		this.userService.save(user);
 
 		return "redirect:/user/all";

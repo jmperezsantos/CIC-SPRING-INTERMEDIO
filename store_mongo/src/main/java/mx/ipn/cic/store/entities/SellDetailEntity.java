@@ -12,8 +12,8 @@ public class SellDetailEntity {
 	@Id
 	private String id;
 
-	@DBRef
 	@JsonBackReference
+	@DBRef
 	private SellEntity sell;
 
 	@DBRef

@@ -41,8 +41,9 @@ public class TestController {
 
 		List<ProductEntity> products = this.products();
 
-		UserEntity user = this.userRepository.findById("5b65e7f81293950afab8cdeb").get();
-		// this.userRepository.save(user);
+		//UserEntity user = this.userRepository.findById("5b65e7f81293950afab8cdeb").get();
+		UserEntity user = new UserEntity("Juan Manuel", "Pérez", "Santos", "Mi casa","RFC");
+		this.userRepository.save(user);
 
 		// SellEntity sell =
 		// this.sellRepository.findById("5b65e9901293950b0d6922a7").get();
@@ -57,8 +58,6 @@ public class TestController {
 		this.sellDetailRepository.saveAll(details);
 
 		sell.setDetail(details);
-		this.sellRepository.save(sell);
-		// sell.setDetail(details);
 
 		return new ResponseEntity<Object>(HttpStatus.OK);
 
