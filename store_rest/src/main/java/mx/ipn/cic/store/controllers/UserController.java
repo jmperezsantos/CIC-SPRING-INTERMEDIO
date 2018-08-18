@@ -53,7 +53,7 @@ public class UserController {
 	}
 
 	@RequestMapping(path = "/edit/{id}", method = RequestMethod.GET)
-	public ModelAndView edit(@PathVariable(name="id") Integer id) {
+	public ModelAndView edit(@PathVariable(name="id") String id) {
 
 		UserEntity found = this.userService.findById(id);
 		
@@ -63,7 +63,7 @@ public class UserController {
 	}
 	
 	@RequestMapping(path = "/delete/{id}", method = RequestMethod.GET)
-	public String delete(@PathVariable(name="id") Integer id) {
+	public String delete(@PathVariable(name="id") String id) {
 
 		this.userService.delete(id);
 		

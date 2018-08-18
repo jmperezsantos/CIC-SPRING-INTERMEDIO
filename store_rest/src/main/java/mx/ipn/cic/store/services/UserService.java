@@ -22,11 +22,16 @@ public class UserService {
 
 	public UserEntity save(UserEntity user) {
 
-		return this.userService.save(user);
+		if(user.getId() != null && user.getId().length() > 0) {
+			return this.userService.update(user);	
+		} else {
+			return this.userService.save(user);	
+		}		
+		
 
 	}
 
-	public UserEntity findById(Integer id) {
+	public UserEntity findById(String id) {
 
 		UserEntity user = this.userService.findById(id);
 
@@ -34,7 +39,7 @@ public class UserService {
 
 	}
 
-	public boolean delete(Integer userId) {
+	public boolean delete(String userId) {
 
 		this.userService.deleteById(userId);
 

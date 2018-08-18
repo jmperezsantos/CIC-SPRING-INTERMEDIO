@@ -52,6 +52,8 @@ public class UserRESTController {
 	@PostMapping(path = "/save", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<UserEntity> save(@RequestBody UserEntity user) {
 
+		user.setId(null);
+
 		ResponseEntity<UserEntity> response;
 		try {
 

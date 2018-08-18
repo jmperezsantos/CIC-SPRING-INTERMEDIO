@@ -39,7 +39,7 @@ public class UserRESTController {
 	
 	@GetMapping(path="/{id}", produces=MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<UserEntity> byId(
-			@PathVariable(name="id") Integer id
+			@PathVariable(name="id") String id
 			){
 		
 		UserEntity user = this.userService.findById(id);
@@ -101,7 +101,7 @@ public class UserRESTController {
 	}
 	
 	@DeleteMapping(path="/delete/{id}")
-	public ResponseEntity<Boolean> delete(@PathVariable(name="id") Integer id){
+	public ResponseEntity<Boolean> delete(@PathVariable(name="id") String id){
 		
 		ResponseEntity<Boolean> response;
 		
